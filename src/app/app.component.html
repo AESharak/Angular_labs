@@ -1,0 +1,4 @@
+<div class="container mt-4">
+  <app-search-bar (searchQueryChange)="onSearch($event)"></app-search-bar>
+  <app-cards-list [searchQuery]="searchQuery"></app-cards-list>
+</div>
