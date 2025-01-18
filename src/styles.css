@@ -1,1 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
+
+body {
+  background-color: #f8f9fa;
+}
+
+.todo-list .list-group-item:hover {
+  background-color: #f8f9fa;
+}
+
+.form-check-input:checked ~ span {
+  color: #6c757d;
+}
+
+.btn-outline-danger {
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+
+.list-group-item:hover .btn-outline-danger {
+  opacity: 1;
+}

@@ -1,4 +1,19 @@
-<div class="container mt-4">
-  <app-search-bar (searchQueryChange)="onSearch($event)"></app-search-bar>
-  <app-cards-list [searchQuery]="searchQuery"></app-cards-list>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h1 class="h3 mb-0">To-Do App</h1>
+        </div>
+        <div class="card-body">
+          <app-todo-input (newTodo)="addTodo($event)"></app-todo-input>
+          <app-todo-list
+            [todos]="todos"
+            (deleteTodo)="deleteTodo($event)"
+            (toggleComplete)="toggleComplete($event)"
+          ></app-todo-list>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

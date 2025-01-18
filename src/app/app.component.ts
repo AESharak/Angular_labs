@@ -1,19 +1,37 @@
 import { Component } from '@angular/core';
-import { SearchBarComponent } from './search-bar/search-bar.component';
-import { CardsListComponent } from './cards-list/cards-list.component';
+import { TodoInputComponent } from './todo-input/todo-input.component';
+import { TodoListComponent } from './todo-list/todo-list.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+interface Todo {
+  id: number;
+  text: string;
+  completed: boolean;
+}
 
 @Component({
   selector: 'app-root',
+  imports: [TodoInputComponent, TodoListComponent, FontAwesomeModule],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-  imports: [SearchBarComponent, CardsListComponent],
 })
 export class AppComponent {
-  title = 'show users';
-  searchQuery: string = '';
+  todos: Todo[] = [];
 
-  onSearch(query: string): void {
-    this.searchQuery = query;
-    console.log('search query', query);
+  addTodo(text: string) {
+    const newTodo: Todo = {
+      id: Date.now(),
+      text,
+      completed: false,
+    };
+    this.todos = [...this.todos, newTodo];
+  }
+
+  deleteTodo(id: number) {
+    this.todos = this.todos.filter((todo) => todo.id !== id);
+  }
+
+  toggleComplete(id: number) {
+    this.todos = this.todos.map((todo) =>
+      todo.id === id ? { ...todo, completed: !todo.completed } : todo
+    );
   }
 }
